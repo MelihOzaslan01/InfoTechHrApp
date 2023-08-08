@@ -1,0 +1,364 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DbInfoTechHrAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="SysBolum">
+          <Key>
+            <PropertyRef Name="BolumId" />
+          </Key>
+          <Property Name="BolumId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BolumAdi" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SysDepartman">
+          <Key>
+            <PropertyRef Name="DepartmanId" />
+          </Key>
+          <Property Name="DepartmanId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmanAdi" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SysOkul">
+          <Key>
+            <PropertyRef Name="OkulId" />
+          </Key>
+          <Property Name="OkulId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Okul" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="TblIzinTalep">
+          <Key>
+            <PropertyRef Name="IzinTalepId" />
+          </Key>
+          <Property Name="IzinTalepId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KisiId" Type="int" />
+          <Property Name="BaslangicTarihi" Type="date" />
+          <Property Name="BitisTarihi" Type="date" />
+          <Property Name="TalepTarihi" Type="datetime" />
+          <Property Name="Onay" Type="bit" />
+          <Property Name="OnaylanKisiId" Type="int" />
+        </EntityType>
+        <EntityType Name="TblKisi">
+          <Key>
+            <PropertyRef Name="KisiId" />
+          </Key>
+          <Property Name="KisiId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmanId" Type="int" />
+          <Property Name="BolumId" Type="int" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="DogumTarihi" Type="date" />
+          <Property Name="TCKimlik" Type="bigint" />
+          <Property Name="DogumYeriIl" Type="nvarchar" MaxLength="50" />
+          <Property Name="DogumYeriIlce" Type="nvarchar" MaxLength="50" />
+          <Property Name="AnneAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="BabaAdi" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TblKisiAdres">
+          <Key>
+            <PropertyRef Name="AdresId" />
+          </Key>
+          <Property Name="AdresId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdresIlId" Type="int" />
+          <Property Name="AdresIlceId" Type="int" />
+          <Property Name="Adres" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TblKisiEgitim">
+          <Key>
+            <PropertyRef Name="KisiEgitimId" />
+          </Key>
+          <Property Name="KisiEgitimId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KisiId" Type="int" />
+          <Property Name="EgitimDurumId" Type="int" />
+          <Property Name="BaslangicYili" Type="int" />
+          <Property Name="BitisYili" Type="int" />
+          <Property Name="OkulId" Type="int" />
+          <Property Name="BitirmeNotu" Type="int" />
+        </EntityType>
+        <EntityType Name="TblKisiTelefon">
+          <Key>
+            <PropertyRef Name="TelefonId" />
+          </Key>
+          <Property Name="TelefonId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TblKullanici">
+          <Key>
+            <PropertyRef Name="KullaniciId" />
+          </Key>
+          <Property Name="KullaniciId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KisiId" Type="int" />
+          <Property Name="KullaniciAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="SonGirisZamani" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TblPdks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KisiId" Type="int" />
+          <Property Name="GirisTarihi" Type="datetime" />
+          <Property Name="CikisTarihi" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="DbInfoTechHrAppModelStoreContainer">
+          <EntitySet Name="SysBolum" EntityType="Self.SysBolum" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SysDepartman" EntityType="Self.SysDepartman" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SysOkul" EntityType="Self.SysOkul" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblIzinTalep" EntityType="Self.TblIzinTalep" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblKisi" EntityType="Self.TblKisi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblKisiAdres" EntityType="Self.TblKisiAdres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblKisiEgitim" EntityType="Self.TblKisiEgitim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblKisiTelefon" EntityType="Self.TblKisiTelefon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblKullanici" EntityType="Self.TblKullanici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblPdks" EntityType="Self.TblPdks" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DbInfoTechHrAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="SysBolum">
+          <Key>
+            <PropertyRef Name="BolumId" />
+          </Key>
+          <Property Name="BolumId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BolumAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SysDepartman">
+          <Key>
+            <PropertyRef Name="DepartmanId" />
+          </Key>
+          <Property Name="DepartmanId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmanAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SysOkul">
+          <Key>
+            <PropertyRef Name="OkulId" />
+          </Key>
+          <Property Name="OkulId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Okul" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblIzinTalep">
+          <Key>
+            <PropertyRef Name="IzinTalepId" />
+          </Key>
+          <Property Name="IzinTalepId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KisiId" Type="Int32" />
+          <Property Name="BaslangicTarihi" Type="DateTime" Precision="0" />
+          <Property Name="BitisTarihi" Type="DateTime" Precision="0" />
+          <Property Name="TalepTarihi" Type="DateTime" Precision="3" />
+          <Property Name="Onay" Type="Boolean" />
+          <Property Name="OnaylanKisiId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TblKisi">
+          <Key>
+            <PropertyRef Name="KisiId" />
+          </Key>
+          <Property Name="KisiId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmanId" Type="Int32" />
+          <Property Name="BolumId" Type="Int32" Nullable="false" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DogumTarihi" Type="DateTime" Precision="0" />
+          <Property Name="TCKimlik" Type="Int64" />
+          <Property Name="DogumYeriIl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DogumYeriIlce" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AnneAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BabaAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblKisiAdres">
+          <Key>
+            <PropertyRef Name="AdresId" />
+          </Key>
+          <Property Name="AdresId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdresIlId" Type="Int32" />
+          <Property Name="AdresIlceId" Type="Int32" />
+          <Property Name="Adres" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblKisiEgitim">
+          <Key>
+            <PropertyRef Name="KisiEgitimId" />
+          </Key>
+          <Property Name="KisiEgitimId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KisiId" Type="Int32" />
+          <Property Name="EgitimDurumId" Type="Int32" />
+          <Property Name="BaslangicYili" Type="Int32" />
+          <Property Name="BitisYili" Type="Int32" />
+          <Property Name="OkulId" Type="Int32" />
+          <Property Name="BitirmeNotu" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TblKisiTelefon">
+          <Key>
+            <PropertyRef Name="TelefonId" />
+          </Key>
+          <Property Name="TelefonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblKullanici">
+          <Key>
+            <PropertyRef Name="KullaniciId" />
+          </Key>
+          <Property Name="KullaniciId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KisiId" Type="Int32" />
+          <Property Name="KullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SonGirisZamani" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TblPdks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KisiId" Type="Int32" />
+          <Property Name="GirisTarihi" Type="DateTime" Precision="3" />
+          <Property Name="CikisTarihi" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="DbInfoTechHrAppEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="SysBolum" EntityType="Self.SysBolum" />
+          <EntitySet Name="SysDepartman" EntityType="Self.SysDepartman" />
+          <EntitySet Name="SysOkul" EntityType="Self.SysOkul" />
+          <EntitySet Name="TblIzinTalep" EntityType="Self.TblIzinTalep" />
+          <EntitySet Name="TblKisi" EntityType="Self.TblKisi" />
+          <EntitySet Name="TblKisiAdres" EntityType="Self.TblKisiAdres" />
+          <EntitySet Name="TblKisiEgitim" EntityType="Self.TblKisiEgitim" />
+          <EntitySet Name="TblKisiTelefon" EntityType="Self.TblKisiTelefon" />
+          <EntitySet Name="TblKullanici" EntityType="Self.TblKullanici" />
+          <EntitySet Name="TblPdks" EntityType="Self.TblPdks" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DbInfoTechHrAppModelStoreContainer" CdmEntityContainer="DbInfoTechHrAppEntities">
+          <EntitySetMapping Name="SysBolum">
+            <EntityTypeMapping TypeName="DbInfoTechHrAppModel.SysBolum">
+              <MappingFragment StoreEntitySet="SysBolum">
+                <ScalarProperty Name="BolumId" ColumnName="BolumId" />
+                <ScalarProperty Name="BolumAdi" ColumnName="BolumAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SysDepartman">
+            <EntityTypeMapping TypeName="DbInfoTechHrAppModel.SysDepartman">
+              <MappingFragment StoreEntitySet="SysDepartman">
+                <ScalarProperty Name="DepartmanId" ColumnName="DepartmanId" />
+                <ScalarProperty Name="DepartmanAdi" ColumnName="DepartmanAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SysOkul">
+            <EntityTypeMapping TypeName="DbInfoTechHrAppModel.SysOkul">
+              <MappingFragment StoreEntitySet="SysOkul">
+                <ScalarProperty Name="OkulId" ColumnName="OkulId" />
+                <ScalarProperty Name="Okul" ColumnName="Okul" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblIzinTalep">
+            <EntityTypeMapping TypeName="DbInfoTechHrAppModel.TblIzinTalep">
+              <MappingFragment StoreEntitySet="TblIzinTalep">
+                <ScalarProperty Name="IzinTalepId" ColumnName="IzinTalepId" />
+                <ScalarProperty Name="KisiId" ColumnName="KisiId" />
+                <ScalarProperty Name="BaslangicTarihi" ColumnName="BaslangicTarihi" />
+                <ScalarProperty Name="BitisTarihi" ColumnName="BitisTarihi" />
+                <ScalarProperty Name="TalepTarihi" ColumnName="TalepTarihi" />
+                <ScalarProperty Name="Onay" ColumnName="Onay" />
+                <ScalarProperty Name="OnaylanKisiId" ColumnName="OnaylanKisiId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblKisi">
+            <EntityTypeMapping TypeName="DbInfoTechHrAppModel.TblKisi">
+              <MappingFragment StoreEntitySet="TblKisi">
+                <ScalarProperty Name="KisiId" ColumnName="KisiId" />
+                <ScalarProperty Name="DepartmanId" ColumnName="DepartmanId" />
+                <ScalarProperty Name="BolumId" ColumnName="BolumId" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="DogumTarihi" ColumnName="DogumTarihi" />
+                <ScalarProperty Name="TCKimlik" ColumnName="TCKimlik" />
+                <ScalarProperty Name="DogumYeriIl" ColumnName="DogumYeriIl" />
+                <ScalarProperty Name="DogumYeriIlce" ColumnName="DogumYeriIlce" />
+                <ScalarProperty Name="AnneAdi" ColumnName="AnneAdi" />
+                <ScalarProperty Name="BabaAdi" ColumnName="BabaAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblKisiAdres">
+            <EntityTypeMapping TypeName="DbInfoTechHrAppModel.TblKisiAdres">
+              <MappingFragment StoreEntitySet="TblKisiAdres">
+                <ScalarProperty Name="AdresId" ColumnName="AdresId" />
+                <ScalarProperty Name="AdresIlId" ColumnName="AdresIlId" />
+                <ScalarProperty Name="AdresIlceId" ColumnName="AdresIlceId" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblKisiEgitim">
+            <EntityTypeMapping TypeName="DbInfoTechHrAppModel.TblKisiEgitim">
+              <MappingFragment StoreEntitySet="TblKisiEgitim">
+                <ScalarProperty Name="KisiEgitimId" ColumnName="KisiEgitimId" />
+                <ScalarProperty Name="KisiId" ColumnName="KisiId" />
+                <ScalarProperty Name="EgitimDurumId" ColumnName="EgitimDurumId" />
+                <ScalarProperty Name="BaslangicYili" ColumnName="BaslangicYili" />
+                <ScalarProperty Name="BitisYili" ColumnName="BitisYili" />
+                <ScalarProperty Name="OkulId" ColumnName="OkulId" />
+                <ScalarProperty Name="BitirmeNotu" ColumnName="BitirmeNotu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblKisiTelefon">
+            <EntityTypeMapping TypeName="DbInfoTechHrAppModel.TblKisiTelefon">
+              <MappingFragment StoreEntitySet="TblKisiTelefon">
+                <ScalarProperty Name="TelefonId" ColumnName="TelefonId" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblKullanici">
+            <EntityTypeMapping TypeName="DbInfoTechHrAppModel.TblKullanici">
+              <MappingFragment StoreEntitySet="TblKullanici">
+                <ScalarProperty Name="KullaniciId" ColumnName="KullaniciId" />
+                <ScalarProperty Name="KisiId" ColumnName="KisiId" />
+                <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="SonGirisZamani" ColumnName="SonGirisZamani" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblPdks">
+            <EntityTypeMapping TypeName="DbInfoTechHrAppModel.TblPdks">
+              <MappingFragment StoreEntitySet="TblPdks">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="KisiId" ColumnName="KisiId" />
+                <ScalarProperty Name="GirisTarihi" ColumnName="GirisTarihi" />
+                <ScalarProperty Name="CikisTarihi" ColumnName="CikisTarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
